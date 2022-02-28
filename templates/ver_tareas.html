@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+ <div class="row"><h3>Mis Tareas - TVC Digital</h3></div>
+  <div class="row">
+    <div class="col-md-9">
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+          <thead>
+            <tr>
+              <td>Solicitud</td>
+              <td>Técnico</td>
+              <td>Zona</td>
+              <td>Tipo</td>
+              <td>Usuario</td>
+              <td>Dirección</td>
+              <td>Detalle</td>
+              <td>Horario</td>
+              <td>Observacion</td>
+              <td>Estado</td>
+              <td>Fecha</td>
+              <td>Acción</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in asignaciones %}
+            <tr>
+              <td>{{row[1]}}</td>
+              <td>{{row[2]}}</td>
+              <td>{{row[3]}}</td>
+              <td>{{row[4]}}</td>
+              <td>{{row[5]}}</td>
+              <td>{{row[6]}}</td>
+              <td>{{row[7]}}</td>
+              <td>{{row[8]}}</td>
+              <td>{{row[9]}}</td>
+              <td>{{row[10]}}</td>
+              <td>{{row[11]}}</td>
+              <td width="120px">
+                <a href="/delete/{{row[1]}}" class="btn btn-primary ">completar</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+  
+{% endblock %}
