@@ -5,12 +5,17 @@ import psycopg2.extras
 app = Flask(__name__)
 app.secret_key = "cairocoders-ednalan"
  
-DB_HOST = "127.0.0.1"
+DB_HOST = "ec2-54-156-110-139.compute-1.amazonaws.com"
+DB_NAME = "d735ss5eugodet"
+DB_USER = "gcjwfpjpgpbjso"
+DB_PASS = "563d04c0c5826ad5ec8f27b91969f8d2375aae7d0f72b8119f23273985b99547"
+PORT = 5432
+'''DB_HOST = "127.0.0.1"
 DB_NAME = "gestion_tecnica"
 DB_USER = "postgres"
-DB_PASS = "12345678"
+DB_PASS = "12345678"'''
 
-conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
+conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST, port=PORT) 
  
 @app.route('/')
 def index():
