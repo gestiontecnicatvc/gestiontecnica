@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+        {% with messages = get_flashed_messages()  %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true" ></span>
+            <!--<a href="/" aria-hidden="true">x</a>-->
+          </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="card card-body" style="width: 22rem;">
+            <form action="{{url_for('add_zona')}}" method="POST">
+              <div class="form-group">
+                <input type="text" class="form-control" name="zona" placeholder="Zona">
+              </div>
+              <button class="btn btn-primary btn-block">
+                Registrar Zona
+              </button>
+              
+            </form>
+        </div>
+    </div>
+  </div>
+{% endblock %}
