@@ -1,0 +1,59 @@
+{% extends "layout2.html" %}
+
+{% block content %}
+
+
+  <!--<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>-->
+
+<div class="card card-body-total">
+ <div class="row"><h3>Registro de Técnicos</h3></div>
+  
+    
+      {% with messages = get_flashed_messages()  %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true" ></span>
+          <!--<a href="/" aria-hidden="true">x</a>-->
+        </button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <div class="card card-body" style="width: 22rem;">
+        <form action="{{url_for('add_tecnico')}}" method="POST">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div class="form-group">
+            <input type="text" class="form-control" name="id" placeholder="Identificación">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="nombres" placeholder="Nombres">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="apellidos" placeholder="Apellidos">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="telefono" placeholder="Teléfono">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="direccion" placeholder="Dirección">
+          </div>
+          <div class="form-group">
+            <select type="text" name="nivel" class="form-control select" aria-placeholder="Nivel">
+                <option value="Nivel 1" selected>Nivel 1</option>
+                <option value="Nivel 2">Nivel 2</option>
+                <option value="Nivel 3">Nivel 3</option>
+              </select>    
+          </div>
+          <button class="btn btn-primary btn-block">
+            Registrar Técnico
+          </button>
+        </form>
+      </div>
+    
+  
+  </div>
+{% endblock %}

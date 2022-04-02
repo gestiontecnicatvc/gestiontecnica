@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <head>
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>    
+    </head>
+    <div class="row">
+    <div class="col-md-7">
+      <h5>Ordenes de Servicio:</h5>
+          <div class="form-group">
+            <select type="text" name="zona" class="form-control select" onchange="location = '/notas_tecnicos?orden='+this.value;''">
+              <option>Seleccione orden</option>  
+                {% for row in orden %}      
+                  <option>{{row}}</option>
+                {% endfor %}
+            </select>    
+          </div>  
+        <div class="card card-body" style="width: 39.6rem;">
+          <h5>Orden de Servicio: <h4 style="color: red;">{{orden_servicio}}</h4></h5>
+          <div class="row"><h5>Técnico: <h4 style="color: red;">{{tecnico}}</h4></h5></div>    
+          
+            <table id="example3" class="table table-striped table-bordered" style="width:100%">
+              <thead>
+                <tr>
+                  <td>Notas de Cierre</td>
+                  <td>Fecha</td>
+                  <td>Estado</td>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in notas %}
+                <tr>
+                  <td>{{row[0]}}</td>
+                  <td>{{row[1]}}</td>
+                  <td>{{row[2]}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+      </div>
+
+      
+      <div class="card card-body card-material-2" style="width: 2rem;">
+        <h5>Material Instalado:</h5>
+          <table id="example3" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+              <tr>
+                <td>Descripción</td>
+                <td>Cantidad</td>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in gastos %}
+              <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+  
+    </div>
+{% endblock %}

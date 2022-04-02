@@ -1,0 +1,134 @@
+{% extends "layout2.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style-form.css') }}">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,40,0,400i,500,500i" rel="stylesheet">
+<div class="container1"> 
+    
+    <div class=" text-center mt-5 ">
+        <h2>Asignar Tarea a Técnico</h2>
+    </div>
+    <div class="row ">
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">
+                    <div class="container">
+                        <form action="{{url_for('add_tareas')}}" method="POST">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Fecha de Asignación</label> <input type="text" name="fecha" value="{{fecha}}" readonly="readonly" class="form-control" required="required" data-error="Firstname is required."> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Número de Solicitud</label> <input type="text" name="numsol" value="OS-{{auto_incre}}" readonly="readonly" class="form-control" required="required" data-error="Foto es requerida."> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Seleccione Técnico *</label> 
+                                            <select name="idtec" name="idtec" class="form-control" required="required" >
+                                                {% for row in tecnicos %}
+                                                    <option>{{row}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Seleccione Zona *</label> 
+                                            <select name="zona" name="zona" class="form-control" required="required">
+                                                {% for row in zonas %}
+                                                    <option>{{row}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Tipo *</label> 
+                                            <select name="tipo" name="tipo" class="form-control" required="required">
+                                                <option value="Instalacion" selected>Instalación</option>
+                                                <option value="Mantenimiento">Mantenimiento</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Tipo *</label> 
+                                            <select name="red" name="red" class="form-control" required="required">
+                                                <option value="FTTH" selected>FTTH</option>
+                                                <option value="EOC">EOC</option>
+                                                <option value="HFC">HFC</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Usuario *</label> <input type="text" name="usuario" class="form-control" placeholder="Porfavor ingresar usuario *" required="required" data-error="Ingrese usuario."> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Dirección *</label> <input type="text" name="direccion" class="form-control" placeholder="Porfavor ingresar la dirección *" required="required" data-error="Ingrese la dirección."> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Detalles *</label> <input type="text" name="detalles" class="form-control" placeholder="Porfavor ingresar detalles *" required="required" data-error="Ingrese detalles."> </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="form_need">Horario *</label> 
+                                        <div class="form-group"> 
+                                            <div class="de">
+                                                <label>DE:</label>
+                                            </div>
+                                            <div class="de-select">
+                                                <select name="de" class="form-control de-select" required="required" data-error="Porfavor elija un nivel.">
+                                                    <option value="8" selected>8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                </select>
+                                            </div>
+                                            <div class="a">
+                                                <label>A:</label>
+                                            </div>
+                                            <div class="a-select">
+                                                <select name="a" class="form-control de-select" required="required" data-error="Porfavor elija un nivel.">
+                                                    <option value="8" selected>8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Observaciones *</label> <input type="text" name="observaciones" class="form-control" placeholder="Porfavor ingresar descripción *" required="required" data-error="Ingrese descripción."> </div>
+                                    </div>
+                                    <div class="col-md-12"> <input type="submit" class="bttn btn-enviar" value="Guardar Registro"> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- /.8 -->
+        </div> <!-- /.row-->
+    </div>
+</div>
+
+
+{% endblock %}

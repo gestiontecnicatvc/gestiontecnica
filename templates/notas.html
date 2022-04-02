@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Notas de Cierre</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style-notas.css') }}">  
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,40,0,400i,500,500i" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+
+  <script>
+
+    var names = document.getElementsByName('dat[]');
+    //var p  = []
+    function insertarTabla(){
+      var TableRow="<tr></tr>";
+      TableRow = TableRow.substring(0,TableRow.length-5) + "<td class='td'>" + names[0].value + "</td>" + TableRow.substring(TableRow.length-5) + "<td class='td'>" + names[1].value + "</td>" + TableRow.substring(TableRow.length-5) + "<input type='button' class='borrar btn btn-primary btn-danger' value='Eliminar' onclick='eliminarFila()' />";
+      var TrElement = document.createElement("tr");
+      TrElement.innerHTML = TableRow;
+      document.getElementById("TableBody").appendChild(TrElement);      
+      mostrarDatos()
+    }
+
+    function eliminarFila() {
+      $(document).on('click', '.borrar', function (event) {
+      event.preventDefault();
+      $(this).closest('tr').remove();
+      mostrarDatos()
+      });
+    }
+
+    function mostrarDatos(){
+      var material=[]
+      //var tr ="<tr></tr>";
+        $("td").each(function(){
+          material.push($(this).text())
+          document.getElementById('material').value = material
+        });
+      }
+</script>
+
+</head>
+<body>
+  <div class="pt-3">
+  <div class="row">
+    <h3>NOTAS DE CIERRE</h3>
+      <!--{{zona_gastos}}-->
+    </div>
+    <form action="{{url_for('add_notas')}}" method="POST">
+    <div class="row1">
+      
+      <div class="contedora-tarjetas">
+        <div class="card2">
+          
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <h5>Numero de orden:</h5>
+            <div class="form-group">
+              <input type="text" class="form-control num_orden" name="numord" readonly="readonly" value="{{orden}}">
+              <input type="hidden" class="form-control" name="zona" readonly="readonly" value="{{zona}}">
+            </div>
+            <h5>Fecha:</h5>
+            <div class="form-group">
+              <input type="text" class="form-control fecha" name="fecha" readonly="readonly" value="{{fecha}}">
+            </div>
+            <h5>Notas de cierres:</h5>
+            <div class="form-group">
+              <textarea type="text" class="form-control notas" rows="12" name="notcierre" ></textarea>   
+            </div>
+            <div class="col-md-12 div-bttn2"> <input type="submit" class="bttn2" value="Guardar Notas"> </div>
+        </div>
+      
+        
+
+      <div class="card1">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div class="form-group">
+            <h5>Material instalado:</h5>
+              <select type="text" name="dat[]" class="form-control select">
+                {% for row in material %}
+                    <option>{{row}}</option>
+                {% endfor %}
+              </select> 
+            <h5>Cantidad:</h5>
+            <div class="form-group">
+              <input type="text" class="form-control cant" name="dat[]" >
+            </div>
+            <div class="div-btn-agregar">
+              <div class="div-btnagregar"><input type="button" value="Agregar" class="btn-agregar" onclick="insertarTabla()" ></div>
+            </div>
+            <br>
+            <table class="tablaMat" style="width:100%" id="TableBody">
+              <thead>
+                <tr class="tr">
+                  <th class="th">Descripción</td>
+                  <th class="th">Cantidad</td>
+                  <th class="th">Acción</td>
+                </tr>
+              </thead>
+            </table>
+            <input type="hidden" id="material" name="material" />
+          </div>
+        </div>
+      </div>
+      </div>  
+    </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+{% extends "layout2.html" %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,40,0,400i,500,500i" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style-herramientas.css') }}">
+<div class="container1"> 
+    
+    <div class=" text-center mt-5 div-registro">
+        <h3>Registro de Herramientas</h3>
+    </div>
+    <div class="row ">
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">
+                    <div class="container">
+                        <form action="{{url_for('add_herramienta')}}" method="POST">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Código:</label> <input type="text" name="cod" class="form-control" placeholder="Porfavor ingresar código *" required="required" data-error="Ingrese código."> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <div class="form-group"> <label for="form_name">Descripción:</label> <input type="text" name="desc" class="form-control" placeholder="Porfavor ingresar descripción *" required="required" data-error="Ingrese descripción."> </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group"> <label for="form_name">Cantidad:</label> <input type="text" name="cant" class="form-control" placeholder="Porfavor ingresar descripción *" required="required" data-error="Ingrese cantidad."> </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group"> <label for="form_name">Seleccione Estado *</label> 
+                                      <select name="estado" class="form-control" required="required" >
+                                        <option value="" selected disabled>--Estado--</option>
+                                        <option value="Nuevo">Nuevo</option>
+                                        <option value="Usado">Usado</option>
+                                      </select>    
+                                    </div>
+                                  </div>
+                                </div>
+                                    <div class="col-md-12"> <input type="submit" class="bttn btn-enviar" value="Guardar Registro"> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- /.8 -->
+        </div> <!-- /.row-->
+    </div>
+</div>
+
+{% endblock %}
+
+

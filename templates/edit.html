@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <h4>Actualizar Datos Técnico</h4>
+      <div class="card card-body">
+        <form action="/update/{{tecnico.te_identificacion}}" method="POST">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div class="form-group">
+            <p>Identificación</p>
+            <input type="text" readonly="readonly" name="id" value="{{tecnico.te_identificacion}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <p>Nombres</p>
+            <input type="text" name="nombres" value="{{tecnico.te_nombres}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <p>Apellidos</p>
+            <input type="text" name="apellidos" value="{{tecnico.te_apellidos}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <p>Telefono</p>
+            <input type="text" name="telefono" value="{{tecnico.te_telefono}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <p>Dirección</p>
+            <input type="text" name="direccion" value="{{tecnico.te_direccion}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <p>Nivel</p>
+            <select type="text" name="nivel" value="{{tecnico.te_nivel}}" class="form-control select" aria-placeholder="Nivel">
+              <option value="Nivel 1" selected>Nivel 1</option>
+              <option value="Nivel 2">Nivel 2</option>
+              <option value="Nivel 3">Nivel 3</option>
+            </select>    
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+              Actualizar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

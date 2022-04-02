@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Actividades</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>-->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css'>
+
+    <!--<script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">-->
+
+    <!--CARRUESEL-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+       
+    <!--CSS DE LA PAGINA-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-menu-tecnicos.css') }}">
+</head>
+
+<body style="background-color:  rgb(223, 224, 231);">
+
+    <!-- Carousel -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+    
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="static/img/1.jpg" alt="Los Angeles" class="d-block" style="width: 100%; height: 200px;">
+        <div class="carousel-caption">
+          <h3>Mensaje Motivacional</h3>
+          <p>Mensaje para alcanzar metas</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="static/img/2.jpg" alt="Chicago" class="d-block" style="width: 100%; height: 200px;">
+        <div class="carousel-caption">
+          <h3>Recomendaciones</h3>
+          <p>Buenas practicas laborales</p>
+        </div> 
+      </div>
+      <div class="carousel-item">
+        <img src="static/img/3.jpg" alt="New York" class="d-block" style="width: 100%; height: 200px;" >
+        <div class="carousel-caption">
+          <h3>Servicio</h3>
+          <p>Buena atencion al cliente</p>
+        </div>  
+      </div>
+    </div>
+    
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+    
+<!-- partial:index.partial.html -->
+<main class="site-wrapper">
+    <div class="pt-table ">
+      <div class="pt-tablecell page-home relative" style="background-position: center; background-size: cover;">
+                      <div class="overlay"></div>
+  
+                      <div class="container1">
+                        <div class="cerrar_sesion">
+                          <a id="cs" href="/logout">cerrar sesión</a>
+                        </div>
+                        <div class="tecnico">
+                          <h2 class="tc">{{fullname}}</h2>
+                        </div>
+
+                          <div class="row">
+                              <div class="col-xs-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+                                      
+                                  <!--BARRA DE MENUS-->
+                                  <div class="hexagon-item">
+                                          <div class="hex-item">
+                                              <div></div>
+                                              <div></div>
+                                              <div></div>
+                                          </div>
+                                          <div class="hex-item">
+                                              <div></div>
+                                              <div></div>
+                                              <div></div>
+                                          </div>
+                                          <a href="{{url_for('ver_tareas')}}" class="hex-content">
+                                              <span class="hex-content-inner">
+                                                  <span class="icon">
+                                                      <i class="fa fa-bullseye"></i>
+                                                  </span>
+                                                  <span class="title">Mis Tareas</span>
+                                              </span>
+                                              <svg viewBox="0 0 173.20508075688772 200" height="150" width="150" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                          </a>
+                                      </div>
+  
+                                      <div class="hexagon-item">
+                                          <div class="hex-item">
+                                              <div></div>
+                                              <div></div>
+                                              <div></div>
+                                          </div>
+                                          <div class="hex-item">
+                                              <div></div>
+                                              <div></div>
+                                              <div></div>
+                                          </div>
+                                          <a href="{{url_for('ver_notas')}}" class="hex-content">
+                                              <span class="hex-content-inner">
+                                                  <span class="icon">
+                                                      <i class="fa fa-clipboard"></i>
+                                                  </span>
+                                                  <span class="title">Mis Notas</span>
+                                              </span>
+                                              <svg viewBox="0 0 173.20508075688772 200" height="150" width="150" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                          </a>
+                                      </div>
+  
+                                      <div class="hexagon-item">
+                                          <div class="hex-item">
+                                              <div></div>
+                                              <div></div>
+                                              <div></div>
+                                          </div>
+                                          <div class="hex-item">
+                                              <div></div>
+                                              <div></div>
+                                              <div></div>
+                                          </div>
+                                          <a href="{{url_for('ver_indicadores')}}" class="hex-content">
+                                              <span class="hex-content-inner">
+                                                  <span class="icon">
+                                                      <i class="fa fa-id-badge"></i>
+                                                  </span>
+                                                  <span class="title">Mis Indicadores</span>
+                                              </span>
+                                              <svg viewBox="0 0 173.20508075688772 200" height="150" width="150" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z" fill="#1e2530"></path></svg>
+                                          </a>
+                                      </div>
+                                      <!--FIN MENU-->
+  
+  
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+        </main>
+        <div class="container pt-4">
+          {% block content %}
+          {% endblock %}
+        </div>
+
+      </body>
+</html>
