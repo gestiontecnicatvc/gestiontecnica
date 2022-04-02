@@ -1,0 +1,102 @@
+.encabezado-tabla{
+    text-align: center;
+    font-size: smaller;
+    background-color: black;
+    color: white;
+    cursor: pointer;   
+}
+
+.filas-tabla{
+    font-size: smaller;
+}
+
+body{
+    font-family: 'Roboto';
+}
+
+.row0{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-family: 'Roboto';
+}
+
+.container2{
+    position: relative;
+    margin-top: -400px;
+}
+
+.bordes-tabla{
+    border-collapse: separate;
+    border-spacing:  3px;
+    border-style: none;
+    border: hidden;
+}
+
+td{
+    border-style: none;
+    border: hidden;
+    font-family: 'Roboto';
+    font-size: medium;
+    text-align: center;
+}
+
+.accion{
+    padding: 20px 20px 20px 20px;
+}
+
+.hora{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+h6{
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.cerrar_sesion{
+    font-family: 'Roboto';
+    background-color: rgb(223, 224, 231);
+    position: relative;
+    margin-top: -255px;
+    margin-left: 980px; 
+    float: left;
+    width: 100%;
+}
+
+#cs{
+    color: black;
+}
+
+.tecnico{
+    font-family: 'Roboto';
+    color: red;
+    background-color:  rgb(223, 224, 231);
+    position: absolute;
+    margin-top: -295px;
+    margin-left: 860px;
+    float: left;
+    z-index: 2;
+}
+
+
+.titulo{
+    position: relative;
+    z-index: 1;
+}
+
+h3{
+    padding-bottom: 25px;
+    font-family: 'Roboto';
+    font-size: x-large;
+    z-index: 3;
+}
+
+.tabla{
+    width: 100%;
+}
+
+.tabla thead{
+    cursor: pointer;      
+}

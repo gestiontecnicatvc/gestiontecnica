@@ -1,0 +1,147 @@
+body{
+    background-color: rgb(247, 240, 240);
+}
+
+p{
+    color: rgb(99, 140, 177);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.hora{
+    color: red;
+}
+
+.icon{
+    background-color: white;
+    color: white;
+    display: none;
+    fill: none;
+}
+
+.tabla-vt{
+    padding-top: 5px;
+}
+
+.tabla-vn{
+    padding-top: 5px;
+}
+
+.div-encabezado{
+    position:relative;
+}
+
+.div-encabezado1{
+    position:absolute;
+    left:0;
+    width:305px;
+}
+
+.div-encabezado2{
+    position:absolute;
+    top: 4px;
+    right: 550px;
+    width:10px;
+}
+
+.div-encabezado3{
+    position:absolute;
+    right: -100px;
+    width:500px;
+}
+
+.ver-notas-href{
+    padding-top: 50px;
+}
+
+.ver-tareas-href{
+    padding-top: 55px;
+}
+
+.div-btn-update{
+    position: relative;
+    width: 500px;
+    
+}
+
+.h4Zona{
+    position: absolute;
+    width: 500px;
+}
+
+.select{
+    
+    background: #fff url('https://www.freeiconspng.com/uploads/arrow-up-icon-23.png') no-repeat;
+    background-size: 15px;
+    background-position:  right 10px center;
+}
+
+.logout{
+    background-color: white;
+    position: relative;
+    left: 90%;
+}
+
+.logout-align{
+    padding-bottom: 3%;
+}
+
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-update{
+    position:absolute;
+    left:1000px;
+    bottom: 80%;
+    width: 80px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #4CAF50;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.btn-agregar{
+    position: sticky;
+    /*position:absolute;*/
+    left:4s0px;
+    bottom: 66%;
+    width: 80px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #4CAF50;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.fullname{
+    color: rgb(255, 0, 51);
+}
+
+.card-body-total{
+    position: absolute;
+    padding-left: 1200px;
+    background-color: red;
+}
+
+.card-material{
+    position: relative;
+    float: right;
+}
+
+.card-material-2{
+    position: absolute;
+    float: right;
+    width: 20px;
+}
+
+.card-zonas{
+    position: absolute;
+    
+    
+}
