@@ -1,0 +1,20 @@
+body {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    background-color: #0c0f15;
+    overflow-x:hidden;
+    color: #000000; 
+}
+
+.container1 {
+    margin-top: 20px;
+    background-color: rgb(255, 255, 255);
+    padding-top: 10px;
+    padding-bottom: 30px;
+    width: 90%;
+    border-radius: 6px;
+}
+
+  

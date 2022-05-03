@@ -1,0 +1,149 @@
+{% extends "layout2.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style-form.css') }}">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!--SWEET ALERT-->
+<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+
+<script type="text/javascript">      
+    function actualizarRegistro() {
+        event.preventDefault();
+        
+        //Si es el mismo que actualice
+        var id = document.getElementById("id").value;
+        let tecnico = "{{tecnico.te_identificacion}}";
+
+        //Si cambia la identificacion y ya existe
+        let str = "{{tecnicos}}";
+        let arrayTecnicos = str;
+        let existe = arrayTecnicos.includes(id);
+        
+        if ( tecnico == id ) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Registro actualizado con exito!',
+                showConfirmButton: false,
+                timer: 4000
+            })            
+            document.formulario_actualizar_tecnicos.submit();	
+        } else if ( existe == true ) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'La identificacion modificada ya existe!',
+                showConfirmButton: false,
+                timer: 4000
+            }) 
+        }
+    }   
+</script>
+
+<div class="container1">     
+    <div class=" text-center mt-5 ">
+        <h1>Actualizar Registro</h1>
+    </div>
+    <div class="row ">
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">
+                    <div class="container">
+                        <form action="/update/{{tecnico.te_identificacion}}" name="formulario_actualizar_tecnicos" onsubmit="return actualizarRegistro()" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Identificación *</label> <input type="text" name="id" id="id" value="{{tecnico.te_identificacion}}" class="form-control" required="required"> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Fotografía Técnico *</label> <input type="file" name="foto" required="required" data-error="Foto es requerida."> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Nombres *</label> <input type="text" name="nombres" value="{{tecnico.te_nombres}}" class="form-control" required="required" data-error="Firstname is required."> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_lastname">Apellidos *</label> <input type="text" name="apellidos" value="{{tecnico.te_apellidos}}" class="form-control" required="required" data-error="Lastname is required."> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_lastname">Teléfono *</label> <input type="text" name="telefono" value="{{tecnico.te_telefono}}" class="form-control" required="required" data-error="Lastname is required."> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_lastname">Dirección *</label> <input type="text" name="direccion" value="{{tecnico.te_direccion}}" class="form-control" required="required" data-error="Lastname is required."> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_email">Email *</label> <input type="email" name="email" class="form-control" value="{{tecnico.te_email}}" required="required" data-error="Valid email is required."> </div>
+                                    </div>
+                                    <div class="col-md-6"><label for="form_tipo">Tipo *</label> 
+                                        <select name="tipo" id="tipo" class="form-control" required="required">
+                                            <option value="" selected disabled>--Seleccione Nivel--</option>
+                                            <option value="Auxiliar">Auxiliar</option>
+                                            <option value="Auxiliar Tecnico">Auxiliar Tecnico</option>
+                                            <option value="Conductor">Conductor Auxiliar</option>
+                                            <option value="Jefe Tecnico">Jefe Tecnico</option>
+                                            <option value="Lider de Zona">Lider de Zona</option>
+                                            <option value="Supervisor">Supervisor</option>
+                                            <option value="Tecnico">Tecnico</option>
+                                        </select> 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_tipo">Nivel *</label> 
+                                            <div class="form-group"> 
+                                                <select name="nivel" id="nivel" class="form-control" required="required" data-error="Porfavor elija un nivel.">
+                                                    <option value="" selected disabled>--Seleccione Nivel--</option>
+                                                    <option value="Nivel 1">Nivel 1</option>
+                                                    <option value="Nivel 2">Nivel 2</option>
+                                                    <option value="Nivel 3">Nivel 3</option>
+                                                </select> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12"> <input type="submit" class="bttn btn-enviar" value="Actualizar Registro"> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- /.8 -->
+        </div> <!-- /.row-->
+    </div>
+</div>
+
+<!--RECORRER TIPO Y CARGAR CONSULTA-->
+<script type="text/javascript">
+    // creamos un variable que hace referencia al select
+	var select = document.getElementById("tipo");
+    // obtenemos el valor a buscar
+    var buscar = "{{tecnico.te_tipo}}";
+    // recorremos todos los valores del select
+    for(var i = 1; i < select.length; i ++){
+        if(select.options[i].text == buscar){
+            // seleccionamos el valor que coincide
+            select.selectedIndex=i;
+        }
+    }
+</script> 
+
+<!--RECORRER NIVEL Y CARGAR CONSULTA-->
+<script type="text/javascript">
+    // creamos un variable que hace referencia al select
+	var select2 = document.getElementById("nivel");
+    // obtenemos el valor a buscar
+    var buscar2 = "{{tecnico.te_nivel}}";
+    // recorremos todos los valores del select
+    for(var i = 1; i < select2.length; i ++){
+        if(select2.options[i].text == buscar2){
+            // seleccionamos el valor que coincide
+            select2.selectedIndex=i;
+        }
+    }
+</script> 
+{% endblock %}

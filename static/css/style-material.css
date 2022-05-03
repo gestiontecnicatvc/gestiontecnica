@@ -1,0 +1,56 @@
+body {
+    font-family: 'Roboto'
+}
+
+.bttn {
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 13px;
+    font-family: Tahoma;    
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.6s;
+    cursor: pointer;
+}
+
+.btn-enviar:hover{
+	background:#12e60b;
+	color:rgb(255, 255, 255);    
+}
+
+h3{
+    padding-bottom: 20px;
+}
+
+h1 {
+    margin-bottom: 40px
+}
+
+label {
+    color: #333
+}
+
+.help-block.with-errors {
+    color: #ff5050;
+    margin-top: 5px
+}
+
+.card {
+    margin-left: 10px;
+    margin-right: 10px
+}
+
+.container1 {
+    margin-top: 20px;
+    margin-left: 4%;
+    background-color: rgb(255, 255, 255);
+    padding-top: 10px;
+    padding-bottom: 30px;
+    width: 90%;
+    border-radius: 6px;
+}
+
+.form-control{
+    width: 70%;
+}

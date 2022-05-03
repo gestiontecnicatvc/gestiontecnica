@@ -1,0 +1,56 @@
+{% extends "layout2.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style-form.css') }}">
+
+<!--SWEET ALERT-->
+<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+
+<script type="text/javascript">      
+    function actualizarAsignacion(){
+        Swal.fire({
+            icon: 'success',
+            title: 'Registro actualizado con exito!',
+            showConfirmButton: false,
+            timer: 4000
+        })
+        return true;	
+    }
+</script>
+
+<div class="container1"> 
+    <div class=" text-center mt-5 ">
+        <h3>Actualizar Asignación</h3>
+    </div>
+    <div class="row ">
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">
+                    <div class="container">
+                        <form action="/update_ah/{{asignacion_herramienta.ah_codherr}}" name="formulario_asignar_herramienta" onsubmit="return actualizarAsignacion()" method="POST">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Tecnico *</label> <input type="text" readonly name="idtec" value="{{asignacion_herramienta.tecnico}}" class="form-control"> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Herramienta *</label> <input type="text" readonly name="desc" value="{{asignacion_herramienta.he_descripcion}}" class="form-control"> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Cantidad *</label> <input type="text" name="cant" class="form-control" value="{{asignacion_herramienta.ah_cantidad}}" required="required" data-error="Ingresa cantidad."> </div>
+                                    </div>
+                                    <div class="col-md-12"> <input type="submit" class="bttn btn-enviar" value="Actualizar Registro"> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- /.8 -->
+        </div> <!-- /.row-->
+    </div>
+</div>
+
+{% endblock %}
